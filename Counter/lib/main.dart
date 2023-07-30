@@ -9,14 +9,33 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: CounterView());
+    return const MaterialApp(home: Counter());
   }
 }
 
-class CounterView extends StatelessWidget {
-  const CounterView({super.key});
+class Counter extends StatefulWidget {
+  const Counter({super.key});
 
-  void increment() {}
+  @override
+  State<StatefulWidget> createState() {
+    return CounterView();
+  }
+}
+
+class CounterView extends State<Counter> {
+  var counter = 0;
+
+  void increment() {
+    setState(() {
+      counter++;
+    });
+  }
+
+  void decrement() {
+    setState(() {
+      counter--;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,16 +45,28 @@ class CounterView extends StatelessWidget {
           centerTitle: true,
           title: const Text('Counter'),
         ),
-        body: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        body: Column(
           children: [
-            ElevatedButton(
-                onPressed: increment, child: const Text('Incrementar')),
-            const SizedBox(
-              width: 12,
+            Padding(
+              padding: const EdgeInsets.all(30),
+              child: Text(
+                counter.toString(),
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 46),
+              ),
             ),
-            ElevatedButton(
-                onPressed: increment, child: const Text('Decrementar')),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                    onPressed: increment, child: const Text('Incrementar')),
+                const SizedBox(
+                  width: 12,
+                ),
+                ElevatedButton(
+                    onPressed: decrement, child: const Text('Decrementar')),
+              ],
+            ),
           ],
         ),
       ),
