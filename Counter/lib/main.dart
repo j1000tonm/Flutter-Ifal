@@ -16,6 +16,8 @@ class MyApp extends StatelessWidget {
 class CounterView extends StatelessWidget {
   const CounterView({super.key});
 
+  void increment() {}
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,6 +25,18 @@ class CounterView extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           title: const Text('Counter'),
+        ),
+        body: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+                onPressed: increment, child: const Text('Incrementar')),
+            const SizedBox(
+              width: 12,
+            ),
+            ElevatedButton(
+                onPressed: increment, child: const Text('Decrementar')),
+          ],
         ),
       ),
     );
