@@ -1,25 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:minimal/screens/categories.dart';
 
 void main() {
-  runApp(const Minimal());
+  runApp(const MoviesApp());
 }
 
-class Minimal extends StatelessWidget {
-  const Minimal({super.key});
+class MoviesApp extends StatelessWidget {
+  const MoviesApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Minimal App'),
+          title: const Text('Filmes'),
         ),
+        body: const CategoriesScreen(),
       ),
     );
   }
 }
-
-// Scaffold é uma classe em flutter que fornece muitos widgets,
-// tais como: Drawer, Snack-Bar, Bottom-Navigation-Bar, Floating-Action-Button, 
-// App-Bar, entre outros. Scaffold irá expandir ou ocupar toda a tela do 
-// dispositivo. Ele ocupará o espaço disponível.
