@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:minimal/answer.dart';
+import 'package:minimal/failure.dart';
 import 'package:minimal/question.dart';
 import 'package:minimal/questions.dart';
+import 'package:minimal/reset.dart';
+import 'package:minimal/success.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -33,19 +36,20 @@ class QuizView extends State<Quiz> {
   }
 
   void answer(String value) {
-    var correct =
-        questions.elementAt(currentQuestion)['correctAnswer'].toString();
-    if (value == correct) {
-      correctAnswer++;
-    }
-    if (currentQuestion < (questions.length)) {
-      setState(() {
+    setState(() {
+      if (currentQuestion < questions.length) {
+        var correct =
+            questions.elementAt(currentQuestion)['correctAnswer'].toString();
+        if (value == correct) {
+          correctAnswer++;
+        }
+
         currentQuestion++;
-      });
-    }
+      }
+    });
   }
 
-  void reset() {
+  void resetQuiz() {
     setState(() {
       correctAnswer = 0;
       currentQuestion = 0;
@@ -86,9 +90,10 @@ class QuizView extends State<Quiz> {
                       value: getAnswerKey(4)),
                 ]
               : [
-                  Text('O jogo acabou! Voce acertou $correctAnswer respostas.'),
-                  ElevatedButton(
-                      onPressed: reset, child: const Text('Reiniciar o jogo'))
+                  correctAnswer >= 2
+                      ? SuccessResult(correctAnswers: correctAnswer)
+                      : FailureResult(correctAnswers: correctAnswer),
+                  ResetButton(action: resetQuiz)
                 ],
         ),
       ),

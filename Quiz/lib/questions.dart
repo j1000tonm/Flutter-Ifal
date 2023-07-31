@@ -3,10 +3,10 @@ var questions = [
     "question": "De quem é a famosa frase: penso, logo existo?",
     "answers": [
       {"a": "Platão"},
-      {"c": "Descartes"},
       {"b": "Galileu Galilei"},
       {"d": "Sócrates"},
       {"e": "Francis Bacon"},
+      {"c": "Descartes"},
     ],
     "correctAnswer": "c"
   },
