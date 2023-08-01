@@ -13,6 +13,7 @@ class MoviesApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: const Text('Filmes'),
         ),
         body: const CategoriesScreen(),

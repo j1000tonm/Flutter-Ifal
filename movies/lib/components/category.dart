@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:minimal/models/category.dart';
+import 'package:minimal/screens/movies.dart';
 
 class CategoryItem extends StatelessWidget {
   final Category category;
@@ -8,7 +9,12 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => MoviesScreen(
+                  category: category,
+                )));
+      },
       child: Container(
         padding: const EdgeInsets.all(20),
         alignment: Alignment.center,
