@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:minimal/utils/routes.dart';
 
@@ -8,6 +9,7 @@ class Menu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: const Text('Menu'),
         ),
         body: Column(
@@ -29,8 +31,10 @@ class Menu extends StatelessWidget {
                     {Navigator.of(context).pushNamed(Routes.movie)},
                 child: const Text('Adicionar/Editar Filme')),
             ElevatedButton(
-                onPressed: () =>
-                    {Navigator.of(context).pushReplacementNamed(Routes.login)},
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+                  Navigator.of(context).pushReplacementNamed(Routes.login);
+                },
                 child: const Text('Sair')),
           ],
         ));

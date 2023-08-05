@@ -1,4 +1,6 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:minimal/firebase_options.dart';
 import 'package:minimal/screens/categories.dart';
 import 'package:minimal/screens/category.dart';
 import 'package:minimal/screens/login.dart';
@@ -7,7 +9,9 @@ import 'package:minimal/screens/movie.dart';
 import 'package:minimal/screens/movies.dart';
 import 'package:minimal/utils/routes.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const Admin());
 }
 

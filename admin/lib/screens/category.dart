@@ -7,7 +7,8 @@ class Category extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Adicionar/Editar'),
+        centerTitle: true,
+        title: const Text('Adicionar/Editar Categoria'),
       ),
     );
   }
