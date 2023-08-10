@@ -3,8 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:minimal/utils/routes.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -12,7 +12,7 @@ class Login extends StatefulWidget {
   }
 }
 
-class LoginForm extends State<Login> {
+class LoginForm extends State<LoginScreen> {
   final _formkey = GlobalKey<FormState>();
   String email = "";
   String password = "";

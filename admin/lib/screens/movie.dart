@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Movie extends StatelessWidget {
-  const Movie({super.key});
+class MovieScreen extends StatelessWidget {
+  const MovieScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
