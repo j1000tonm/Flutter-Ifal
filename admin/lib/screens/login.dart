@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:minimal/components/container.dart';
 import 'package:minimal/utils/routes.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -13,9 +14,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class LoginForm extends State<LoginScreen> {
-  final _formkey = GlobalKey<FormState>();
   String email = "";
   String password = "";
+  bool isLoggedIn = false;
+
+  final _formkey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -45,12 +48,9 @@ class LoginForm extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('Login'),
-      ),
-      body: Container(
-        padding: const EdgeInsets.all(40),
+      body: ScreenContainer(
+        includeLogo: true,
+        title: '',
         child: Form(
           key: _formkey,
           child: Column(
@@ -69,7 +69,7 @@ class LoginForm extends State<LoginScreen> {
               Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: ElevatedButton(
-                    onPressed: doLogin, child: const Text('Entrar')),
+                    onPressed: doLogin, child: const Text('Login')),
               )
             ],
           ),
