@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:minimal/components/container.dart';
 import 'package:minimal/utils/routes.dart';
 
 class MenuScreen extends StatelessWidget {
@@ -7,12 +8,18 @@ class MenuScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text('Menu'),
-        ),
-        body: Column(
+    return ScreenContainer(
+      includeLogo: false,
+      title: 'Admin',
+      child: Expanded(
+        child: GridView(
+          padding: const EdgeInsets.only(left: 4, right: 4, top: 20),
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 400,
+            childAspectRatio: 5 / 0.8,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
+          ),
           children: [
             ElevatedButton(
                 onPressed: () =>
@@ -37,6 +44,8 @@ class MenuScreen extends StatelessWidget {
                 },
                 child: const Text('Sair')),
           ],
-        ));
+        ),
+      ),
+    );
   }
 }

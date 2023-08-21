@@ -29,9 +29,9 @@ class Admin extends StatelessWidget {
       routes: {
         Routes.login: (ctx) => const LoginScreen(),
         Routes.menu: (ctx) => const MenuScreen(),
-        Routes.categories: (ctx) => const CategoriesScreen(),
+        Routes.categories: (ctx) => CategoriesScreen(),
         Routes.category: (ctx) => const CategoryScreen(),
-        Routes.movies: (ctx) => const MoviesScreen(),
+        Routes.movies: (ctx) => MoviesScreen(),
         Routes.movie: (ctx) => const MovieScreen(),
       },
     );

@@ -1,15 +1,53 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:minimal/components/container.dart';
+import 'package:minimal/components/dropdown.dart';
 
-class MovieScreen extends StatelessWidget {
+class MovieScreen extends StatefulWidget {
   const MovieScreen({super.key});
 
   @override
+  State<StatefulWidget> createState() {
+    return Movie();
+  }
+}
+
+class Movie extends State<MovieScreen> {
+  String category = '';
+  bool isLoggedIn = false;
+
+  final _formKey = GlobalKey<FormState>();
+
+  Future<void> login() async {
+    _formKey.currentState?.save();
+    if (kDebugMode) {
+      print(category);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('Adicionar/Editar Filme'),
-      ),
-    );
+    return SizedBox(
+        width: MediaQuery.of(context).size.width * 0.25,
+        child: ScreenContainer(
+            includeLogo: false,
+            title: 'Adicionar Filme',
+            child: Form(
+                key: _formKey,
+                child: Column(children: [
+                  TextFormField(
+                      decoration: const InputDecoration(
+                          labelText: 'Descrição do filme'),
+                      keyboardType: TextInputType.emailAddress,
+                      onSaved: (value) => category = value!),
+                  const DropdownButtonCategory(),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: ElevatedButton(
+                      onPressed: login,
+                      child: const Text('Adicionar'),
+                    ),
+                  ),
+                ]))));
   }
 }
